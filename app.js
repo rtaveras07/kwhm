@@ -1,21 +1,21 @@
- 
-  document.getElementById('add-item').addEventListener('click', realizarCalculos);
+
+document.getElementById('add-item').addEventListener('click', realizarCalculos);
 var diasFacturacion = 30;// los dias establecidos para la fkacturacion por la empresa 30 dias 
 var consumo = 0;
-var precioRango1 = 4.44;
-var precioRango2 = 6.97;
-var precioRango3 = 10.86;
-var precioRango4 = 11.10;
+var precioRango1 = 4.44; // hasta 200 kw
+var precioRango2 = 6.97;// de 201 a 300
+var precioRango3 = 10.86; // de 301 a 700 
+var precioRango4 = 11.10;// de 700 en adelante. 
 
-var cargofijo2 = 137.25
-var cargofijo1 = 37.95
- 
- 
+var cargofijo2 = 137.25 // si su sonsumo es mayor o igual a 100 kw al mes. 
+var cargofijo1 = 37.95  // si su consumo es inferior a 100 kw 
+
+
 
 
 
 function realizarCalculos() {
- //localStorage.clear();
+  localStorage.clear();
   let kw = document.getElementById('entrada').value; //valor entrada 
   consumo = kw * diasFacturacion; //multiplicando para saber que consumo tendra mensual si el consumo diario es el introducido 
   //si no hay tareas en el local store
@@ -60,81 +60,44 @@ function calculoRango(consumoCalc) {
     //Rango 1  , de 0 a 200 
     if (consumoCalc >= 200) {
       let resultadoRango = 200 * precioRango1;
-    
       //ejemplo, si sonn 600 entonces quedarian 400 para la proxima escala o rango. 
       localStorage.setItem('Rango1_facturado', JSON.stringify(200)); //se almacena 
-    
+
     } else {
-      
+
       let resultadoRango = consumoCalc * precioRango1;
       localStorage.setItem('Rango1_facturado', JSON.stringify(consumoCalc)); //se almacena 
-      
+
     }
-
-
-
-
-
     //Rango 2  de 201 a 300 
-
-    if (consumo-200 >= 100) { //  
-
+    if (consumo - 200 >= 100) { //  
       let resultadoRango = 100 * precioRango2;
-    // si fue mayor de 100 entonces al restante se le resta 100 para seguir a la proxima etapa o rango. 
+      // si fue mayor de 100 entonces al restante se le resta 100 para seguir a la proxima etapa o rango. 
       localStorage.setItem('Rango2_facturado', JSON.stringify(100));
-
-   
-
     }
 
-    if (consumo-200 <= 100 && consumo-200 >0) {
-
-      let resultadoRango = (consumo-200) * precioRango2;
-      localStorage.setItem('Rango2_facturado', JSON.stringify(consumo-200 ));
-     
-    
-
+    if (consumo - 200 <= 100 && consumo - 200 > 0) {
+      let resultadoRango = (consumo - 200) * precioRango2;
+      localStorage.setItem('Rango2_facturado', JSON.stringify(consumo - 200));
     }
-
-
-
     //Rango 3 de 301 a 700
-    if (consumo - 300 < 700 &&  consumo - 300 > 0 ) {
+    if ((consumo - 300) < 700 && (consumo - 300) > 0) {
       let resultadoRango = (consumo - 300) * precioRango3;
       localStorage.setItem('Rango3_facturado', JSON.stringify(consumo - 300));
-   
-     
-
-
     }
-    if (consumo-300 > 700) {
-      let resultadoRango = (consumo-300)  * precioRango3;
+    if ((consumo - 300) > 700) {
+      //let resultadoRango = (consumo-300)  * precioRango3;
       localStorage.setItem('Rango3_facturado', JSON.stringify(700));
-     
-      
-
     }
-
-
     //rango 4 
-    if ( consumo-1000>0) {
-      let resultadoRango = (consumo-1000) * precioRango4;
-      localStorage.setItem('Rango4_facturado', JSON.stringify(consumo-1000));
-
-        
-
+    if (consumo - 1000 > 0) {
+      let resultadoRango = (consumo - 1000) * precioRango4;
+      localStorage.setItem('Rango4_facturado', JSON.stringify(consumo - 1000));
     }
-
-
-
-
   } catch (error) {
     alert(error);
   }
-
 }
-
-
 
 function resultado() {  ///opteniendo los items.
 
@@ -147,20 +110,20 @@ function resultado() {  ///opteniendo los items.
     let rango3_facturado = JSON.parse(localStorage.getItem('Rango3_facturado'));
     let rango4_facturado = JSON.parse(localStorage.getItem('Rango4_facturado'));
 
-    let rango1 =   Math.round((rango1_facturado * precioRango1),2);
-    let rango2 =   Math.round((rango2_facturado * precioRango2),2);
-    let rango3 =   Math.round((rango3_facturado * precioRango3),2);
-    let rango4 =   Math.round((rango4_facturado * precioRango4),2);
+    let rango1 = Math.round((rango1_facturado * precioRango1), 2);
+    let rango2 = Math.round((rango2_facturado * precioRango2), 2);
+    let rango3 = Math.round((rango3_facturado * precioRango3), 2);
+    let rango4 = Math.round((rango4_facturado * precioRango4), 2);
 
 
-    let total=rango1+rango2+rango3+rango4+cargofijo;
-    
+    let total = rango1 + rango2 + rango3 + rango4 + cargofijo;
+
     const formatterDolar = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
     })
-     
-     
+
+
 
     let facturacion = document.getElementById('descripcionConsumo');
     facturacion.innerHTML = '';
@@ -176,7 +139,7 @@ function resultado() {  ///opteniendo los items.
       <b>Total a Pagar : ${formatterDolar.format(total)}</b>   
       </div>
         `;
-       
+
 
 
   } catch (error) {
