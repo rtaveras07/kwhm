@@ -1,5 +1,8 @@
 
 document.getElementById('add-item').addEventListener('click', realizarCalculos);
+const facturacion = document.getElementById('descripcionConsumo');
+var isclean = document.getElementById('clean');
+
 var diasFacturacion = 0;// los dias establecidos para la fkacturacion por la empresa 30 dias 
 var consumo = 0;
 var precioRango1 = 4.44; // hasta 200 kw
@@ -15,7 +18,6 @@ var consumofinal2=0;
 var consumofinal3=0;
 var consumofinal4=0;
 
-
 function realizarCalculos() {
 
   consumofinal1 = 0;
@@ -23,23 +25,19 @@ function realizarCalculos() {
   consumofinal3 = 0;
   consumofinal4 = 0;
 
-
   //validando seleccion radio button
   let diario = document.getElementById("diario");
-   
   if (diario.checked == true) {
     diasFacturacion = 30;
   } else {
     diasFacturacion = 1;
   }
-
 //tomando la entrada del usuario. 
   let kw = document.getElementById('entrada').value; //valor entrada 
   consumo = kw * diasFacturacion;
   calculoRango(consumo);
   resultado();
 }
-
 function calculoRango(consumoCalc) {
 //logica de rango de consumo. 
   try {
@@ -49,7 +47,6 @@ function calculoRango(consumoCalc) {
     } else {
       consumofinal1 = consumoCalc;
     }
-
     //Rango 2  de 201 a 300 
     if (consumo - 200 >= 100) {
       consumofinal2 = 100;
@@ -75,8 +72,6 @@ function calculoRango(consumoCalc) {
     alert(error);
   }
 }
-
-
 //Calculando el cargo fijo 
 function resultado() {  
   try {
@@ -86,23 +81,18 @@ function resultado() {
     else {
       cargofijo = cargofijo1
     }
-
 //calculando el consumo consu respectivo rango de consumo. 
-
     let rango1 = Math.round((consumofinal1 * precioRango1), 2);
     let rango2 = Math.round((consumofinal2 * precioRango2), 2);
     let rango3 = Math.round((consumofinal3 * precioRango3), 2);
     let rango4 = Math.round((consumofinal4 * precioRango4), 2);
     let total = rango1 + rango2 + rango3 + rango4 + cargofijo;
-    
     //moneda 
     const formatterDolar = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
     })
-
     //desplegando el resultado 
-    let facturacion = document.getElementById('descripcionConsumo');
     facturacion.innerHTML = '';
     facturacion.innerHTML += `<div>
       Consumo 30 días: ${consumo} <br>
@@ -113,28 +103,11 @@ function resultado() {
       ${consumofinal4} x ${precioRango4} =${rango4}<br>  
       <hr>
       <b>Total a Pagar : ${formatterDolar.format(total)}</b>   
-      </div>
-        `;
+      </div>`;
+
+      isclean.classList.remove('clean-show');
+      isclean.classList.add('clean-hide');
   } catch (error) {
     alert("error en resultados: " + error);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-

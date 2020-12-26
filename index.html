@@ -10,36 +10,33 @@
 </head>
 
 <body>
-<center>
-    <h1>Cálculo de consumo energético a RD$</h1>
-    <h2>Recordar introducir los datos según se soliciten para realizar los calculos de su consumo</h2>
-
-</center>
-    <hr>
-    <form>
-        <center><p>Por favor seleccione el método</p></center>
-        <input type="radio" id="diario" name="tipoconsumo" value="diario" checked>
-        <label for="diario">Promedio diario</label><br>
-
-        <input type="radio" id="mensual" name="tipoconsumo" value="mensual">
-        <label for="mensual">Mensual</label><br>
-
-        
-
-    </form>
-    <b> <center> <input id="entrada"> <br> <br>
-       
-
-
-
-
-        <button id="add-item">Calcular</button>
-
-        <ul id="descripcionConsumo">
-            <li> </li>
-        </ul>
+    <center>
+        <h1>Cálculo de consumo energético a RD$</h1>
+        <h2>Recordar introducir los datos según se soliciten para realizar los calculos de su consumo</h2>
     </center>
-        <script src="app.js"></script>
-</body>
+    <div class="app">
+        <div class="metodo">
+            <center>
+                Por favor seleccione el método
+                <br>
+                <br>
+                <input type="radio" id="diario" name="tipoconsumo" value="diario" checked>
+                <label for="diario">Promedio diario</label>
+                <input type="radio" id="mensual" name="tipoconsumo" value="mensual">
+                <label for="mensual">Mensual</label>
+            </center>
+        </div> <br>
+    
+        <input id="entrada" type="text" placeholder="introducte el consumo">
+        <button id="add-item">Calcular</button>
+    
+        <div class="showCalc">
+            <ul id="descripcionConsumo"></ul>
+        </div>
 
+        <center><span class="clean-show" id="clean">🗗 No hay elementos para mostrar</span></center>
+
+    </div>
+</body>
+<script src="app.js"></script>
 </html>
