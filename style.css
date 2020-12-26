@@ -1,14 +1,15 @@
+body{width:90%;margin: 0 auto;min-width:600px;max-width:2000px}
 body{
     background-color: rgb(230, 229, 173);
 }
 
 form{
-    background-color: rgb(39, 139, 0);
-    width: 50%;
-    color: white;
-    margin: 50px auto;
-    padding: 50px;
-    box-sizing: border-box;
+    background-color: rgb(192, 226, 195);
+    width: 25%;
+    color: rgb(8, 8, 8);
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: content-box;
 }
 
 form h1{
@@ -23,8 +24,8 @@ form input#todo-input{
 }
 
 button{
-    height: 25px;
-    width: 25%;
+    height: 20px;
+    width: 10%;
     background-color: red;
     color: white;
     border-style: none;

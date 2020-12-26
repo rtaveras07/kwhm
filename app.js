@@ -1,6 +1,6 @@
 
 document.getElementById('add-item').addEventListener('click', realizarCalculos);
-var diasFacturacion = 30;// los dias establecidos para la fkacturacion por la empresa 30 dias 
+var diasFacturacion = 0;// los dias establecidos para la fkacturacion por la empresa 30 dias 
 var consumo = 0;
 var precioRango1 = 4.44; // hasta 200 kw
 var precioRango2 = 6.97;// de 201 a 300
@@ -15,6 +15,15 @@ var cargofijo1 = 37.95  // si su consumo es inferior a 100 kw
 
 
 function realizarCalculos() {
+ let diario= document.getElementById("diario");
+// let mensual= document.getElementById("mensual");
+  if (diario.checked==true) {
+    diasFacturacion = 30;
+    } else {
+      diasFacturacion = 1;
+    }
+    
+    
   localStorage.clear();
   let kw = document.getElementById('entrada').value; //valor entrada 
   consumo = kw * diasFacturacion; //multiplicando para saber que consumo tendra mensual si el consumo diario es el introducido 

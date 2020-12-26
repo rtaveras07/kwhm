@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,38 @@
     <link rel="stylesheet" href="style.css">
     <title>KWH RD$</title>
 </head>
+
 <body>
-    
-        <h1>Cálculo de consumo energético a RD$</h1>
-        <h2>Cálculo de consumo energético en pesos RD$, aplicando las tarifas establecidas por las leyes Dominicanas.
-        </h2>
-         
-             <br>
-             <hr>
-        <input id="entrada" >
-      
-     
-       <button id="add-item"   >Calcular</button>
+<center>
+    <h1>Cálculo de consumo energético a RD$</h1>
+    <h2>Recordar introducir los datos según se soliciten para realizar los calculos de su consumo</h2>
+
+</center>
+    <hr>
+    <form>
+        <center><p>Por favor seleccione el método</p></center>
+        <input type="radio" id="diario" name="tipoconsumo" value="diario" checked>
+        <label for="diario">Promedio diario</label><br>
+
+        <input type="radio" id="mensual" name="tipoconsumo" value="mensual">
+        <label for="mensual">Mensual</label><br>
+
         
-        <ul  id="descripcionConsumo">
-            <li> </li> 
+
+    </form>
+    <b> <center> <input id="entrada"> <br> <br>
+       
+
+
+
+
+        <button id="add-item">Calcular</button>
+
+        <ul id="descripcionConsumo">
+            <li> </li>
         </ul>
-   
-    <script src="app.js"></script>
+    </center>
+        <script src="app.js"></script>
 </body>
+
 </html>
- 
