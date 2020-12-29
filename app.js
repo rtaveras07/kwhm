@@ -91,7 +91,7 @@ function resultado() {
     const formatterDolar = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD'
-    })
+    }) 
     //desplegando el resultado 
     facturacion.innerHTML = '';
     facturacion.innerHTML += `<div>
