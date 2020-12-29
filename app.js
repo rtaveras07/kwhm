@@ -1,5 +1,4 @@
-
-document.getElementById('add-item').addEventListener('click', realizarCalculos);
+ document.getElementById('add-item').addEventListener('click', realizarCalculos);
 const facturacion = document.getElementById('descripcionConsumo');
 var isclean = document.getElementById('clean');
 
