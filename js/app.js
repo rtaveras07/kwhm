@@ -1,6 +1,8 @@
  document.getElementById('add-item').addEventListener('click', realizarCalculos);
 const facturacion = document.getElementById('descripcionConsumo');
 var isclean = document.getElementById('clean');
+//boton del dialog
+const configButton = document.getElementById('configButton');
 
 var diasFacturacion = 0;// los dias establecidos para la fkacturacion por la empresa 30 dias 
 var consumo = 0;
@@ -16,6 +18,13 @@ var consumofinal1=0; //variables para guardar el valor en consumo kwh segun el r
 var consumofinal2=0;
 var consumofinal3=0;
 var consumofinal4=0;
+
+//Evento click para el boton del dialog
+configButton.addEventListener('click', () => configConfirm());
+
+function configConfirm () {
+    console.log('Listo');
+}
 
 function realizarCalculos() {
 
@@ -103,9 +112,6 @@ function resultado() {
       <hr>
       <b>Total a Pagar : ${formatterDolar.format(total)}</b>   
       </div>`;
-
-      isclean.classList.remove('clean-show');
-      isclean.classList.add('clean-hide');
   } catch (error) {
     alert("error en resultados: " + error);
   }
