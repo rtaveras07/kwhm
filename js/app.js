@@ -24,6 +24,7 @@ configButton.addEventListener('click', () => configConfirm());
 
 function configConfirm () {
     console.log('Listo');
+    
 }
 
 function realizarCalculos() {
